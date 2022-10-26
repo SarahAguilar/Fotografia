@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Fotografias.Views.PagoFotografia">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#5F6F94">
+            
+            <Label Text="Formulario Digital" HorizontalOptions="CenterAndExpand" Margin="0,5,0,0" TextColor="White" FontSize="18" FontFamily=""/>
+            <Frame VerticalOptions="FillAndExpand" Margin="20,0,20,20" CornerRadius="10">
+                <StackLayout>
+                    <StackLayout x:Name="contenedorPickers">
+                        <Label Text="Ingresa numero de fotos"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center">
+
+                        </Label>
+                        <Entry x:Name="lbl_NumFotos" Placeholder="Ingresa el numero de fotos" FontSize="Small" Keyboard="Numeric" Text="{Binding CantidadFotos}" ></Entry>
+
+
+                        <Picker Grid.Row="1" Grid.Column="1" Title="Selecciona tipo de foto" FontSize="Small" x:Name="pkrTipo"
+                                ItemsSource="{ Binding ListTipo }"
+                                ItemDisplayBinding="{ Binding Value }"
+                                SelectedItem="{ Binding SelectFoto }" >
+                        </Picker>
+
+                        
+
+                    </StackLayout> 
+                    <Label Text="- M E D I D A S - " HorizontalOptions="Center" FontSize="Small"></Label>
+                    <Label Text="Seleccione una medida" HorizontalOptions="Center" FontSize="10"></Label>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        
+                        <StackLayout x:Name ="ContenedorMedidas" >
+                            <RadioButton Content="3 x 4"
+                                 GroupName="Medidas"                                         
+                                 IsChecked="{Binding Medida1}"/>
+                            <RadioButton Content="4 x 6"
+                                 GroupName="Medidas"
+                                 IsChecked="{Binding Medida2}"/>
+                            <RadioButton Content="5 x 7"
+                                 GroupName="Medidas"
+                                 IsChecked="{Binding Medida3}"/>
+                            <RadioButton Content="6 x 8"
+                                 GroupName="Medidas"
+                                 IsChecked="{Binding Medida4}"/>
+
+                        </StackLayout>
+                        
+                        <Label Grid.Column="1" Grid.Row="3" Text="" Margin="0,5,0,0"></Label>
+                    </Grid>
+                    <StackLayout x:Name="contenedorPagos">
+                        <Button Text="Calcular total" FontSize="Small" BackgroundColor="Beige" CornerRadius="10" Command="{Binding CalcularPagoComando}"></Button>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Column="0" Grid.Row="0" Text="Cantidad a pagar:" Margin="0,19,0,0" HorizontalOptions="Center"></Label>
+                        <Label Grid.Row="1" Text="{Binding TotalPagar}" FontAttributes="Bold" HorizontalOptions="Center"></Label>
+                        
+                        <Button Grid.Column="1" Grid.Row="1" Text="Limpiar" FontSize="10" BackgroundColor="Beige" CornerRadius="10" BorderWidth="8" Margin="0,0,0,0" Command="{Binding LimpiarComando}"></Button>
+                    </Grid>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
